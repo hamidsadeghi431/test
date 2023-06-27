@@ -1,71 +1,23 @@
 {{--big modal chart--}}
-{{--<div class="modal fade bd-example-modal-lg" id="modal-big" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">--}}
-{{--    <div class="modal-dialog modal-lg">--}}
-{{--        <div class="modal-content">--}}
-{{--            @livewire('charts.home-mission-one-charts-component')--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-<div class="modal fade" id="modal-info-tag">
-    <div class="modal-dialog modal-xl">
+<div class="modal fade bd-example-modal-lg" id="modal-big" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-
-            <div class="modal-body">
-                @livewire('information-form.main-page-component')
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
-                {{--                <button type="button" class="btn btn-primary">ذخیره تغییرات</button>--}}
-            </div>
+            @livewire('uses-of-bulding.add-uses-component')
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
-<div class="modal fade" id="modal-energy-tag">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-
-            <div class="modal-body">
-                @livewire('energy-tags.main-page-component')
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
-                {{--                <button type="button" class="btn btn-primary">ذخیره تغییرات</button>--}}
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="modal-big">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-
-            <div class="modal-body">
-{{--                @livewire('charts.home-mission-one-charts-component')--}}
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
-{{--                <button type="button" class="btn btn-primary">ذخیره تغییرات</button>--}}
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">افزودن مصرف</h4>
+                <h4 class="modal-title">افزودن کاربری اصلی یا فرعی</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                @livewire('pwrconsum.add-pwr-consum-component')
+                @livewire('uses-of-bulding.add-uses-component')
             </div>
 
         </div>
@@ -88,7 +40,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">خیر</button>
-                <button type="button" class="btn btn-primary" wire:click="delete">بله</button>
+                <button type="button" class="btn btn-primary" wire:click="delete1">بله</button>
             </div>
         </div>
     </div>

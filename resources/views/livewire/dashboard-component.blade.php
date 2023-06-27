@@ -34,9 +34,9 @@
                             <div class="col-lg-2 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-info">
-                                    <div class="inner">
-                                        <h3>{{number_format($sei,2)}}</h3>
-                                        <p>SECe</p>
+                                    <div class="inner ">
+                                        <h3 style="direction: ltr"> {{number_format($sei3,2)}} <span  style="font-size: 12px;">( kwh/m<sup>2</sup> )</span>  </h3>
+                                        <p>مصرف ویژه برق سال آخر</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-clipboard"></i>
@@ -52,8 +52,8 @@
                                 <!-- small box -->
                                 <div class="small-box bg-success">
                                     <div class="inner">
-                                       <h3>{{number_format($sei/2,2)}}</h3>
-                                        <p>AvSECe</p>
+                                       <h3 style="direction: ltr" >{{number_format($sei/3,2)}} <span  style="font-size: 12px;">( kwh/m<sup>2</sup> )</span></h3>
+                                        <p>میانگین مصرف ویژه برق</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-beer"></i>
@@ -67,24 +67,10 @@
                             {{--                    @if($accsb13)--}}
                             <div class="col-lg-2 col-6">
                                 <!-- small box -->
-                                <div class="small-box bg-warning">
-                                    <div class="inner">
-                                    <h3 class="text-white">{{number_format($r,2)}}</h3>
-                                        <p class="text-white">R</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="ion ion-ios-cog-outline"></i>
-                                    </div>
-{{--                                    onclick="ModalBox(this,'syskdetails/3','90%','90%')"--}}
-                                    <a href="#"  class="small-box-footer text-white">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-6">
-                                <!-- small box -->
                                 <div class="small-box bg-orange">
                                     <div class="inner">
-                                    <h3 class="text-white">{{number_format($seiIdeal,2)}}</h3>
-                                        <p class="text-white">SEIIdeal</p>
+                                    <h3 class="text-white" style="direction: ltr" >{{number_format($seiIdeal,2)}} <span  style="font-size: 12px;">( kwh/m<sup>2</sup> )</span></h3>
+                                        <p class="text-white">مصرف ویژه برق ایده آل</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-ios-cog-outline"></i>
@@ -93,6 +79,21 @@
                                     <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
                                 </div>
                             </div>
+                            <div class="col-lg-2 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h3 class="text-white" >{{number_format($r,2)}}</h3>
+                                        <p class="text-white">نسبت انرژی</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-ios-cog-outline"></i>
+                                    </div>
+                                    {{--                                    onclick="ModalBox(this,'syskdetails/3','90%','90%')"--}}
+                                    <a href="#"  class="small-box-footer text-white">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                                </div>
+                            </div>
+
                             {{--                    @endif--}}
                             <!-- ./col -->
                             {{--                    @if($accsb14)--}}
@@ -100,12 +101,12 @@
                                 <!-- small box -->
                                 <div class="small-box bg-danger">
                                     <div class="inner">
-                                        @if($mm)<h3>{{$mm}} </h3>
+                                        @if($potential)<h3>{{number_format($potential,2)}}  <span  style="font-size: 20px;"></span>  درصد</h3>
                                         @else
                                             اطلاعات موجود نیست
                                         @endif
 
-                                        <p>mm<sup>2</sup></p>
+                                        <p>پتانسل صرفه جویی</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-settings"></i>
@@ -124,12 +125,12 @@
                                             اطلاعات موجود نیست
                                         @endif
 
-                                        <p>بازدهی انرژی</p>
+                                        <p>برچسب انرژی</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-settings"></i>
                                     </div>
-                                    <a wire:click="energyTags('{{$userId}}','{{number_format($sei,2)}}','{{number_format($sei/2,2)}}','{{number_format($r,2)}}','{{number_format($seiIdeal,2)}}','{{$mm}}','{{$energyGrade}}','{{$lastYear}}')" href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                                    <a wire:click="energyTags('{{$userId}}','{{number_format($sei,2)}}','{{number_format($sei/2,2)}}','{{number_format($r,2)}}','{{number_format($seiIdeal,2)}}','{{$mm}}','{{$energyGrade}}','{{$lastYear}}')" href="#" class="small-box-footer"> مشاهده ی برچسب انرژی <i class="fa fa-arrow-circle-left"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -160,7 +161,10 @@
                             </label>
                         </span>
 {{--                        @if($userId != null)--}}
-                        <button wire:click="calculate('{{$userId}}')" type="button" class="btn btn-danger" >
+                        <button wire:click="deletePwrEnd('{{$userId}}')" type="button" class="btn btn-danger" >
+                            حذف محاسبات کاربر
+                        </button>
+                        <button wire:click="calculate('{{$userId}}')" type="button" class="btn btn-warning" >
                             محاسبه اطلاعات
                         </button>
 {{--                        @endif--}}
@@ -170,7 +174,10 @@
                         <button wire:click="addData('a','pwrConsum')" type="button" class="btn btn-primary" >
                             افزودن مصرف
                         </button>
-                        <button wire:click="addData('a','pwrConsum')" class="btn btn-warning" data-toggle="modal" data-target="#addParameters"><i class="fa fa-plus"></i></button>
+                        <button wire:click="requestForAnalyse({{\Illuminate\Support\Facades\Auth::user()->id}})" type="button" class="btn btn-info" >
+                            درخواست تحلیل انرژی
+                        </button>
+{{--                        <button wire:click="addData('a','pwrConsum')" class="btn btn-warning" data-toggle="modal" data-target="#addParameters"><i class="fa fa-plus"></i></button>--}}
                     </div>
                 </div>
                 <!-- /.card -->
@@ -408,6 +415,12 @@
 {{--    <script src="{{asset('admin/assets/chart/canvasjs.min.js')}}"></script>--}}
     @livewireScripts
     <script>
+        window.addEventListener('show_info_form',event=>{
+            $('#modal-info-tag').modal('show');
+        })
+        window.addEventListener('close_info_form',event=>{
+            $('#modal-info-tag').modal('hide');
+        })
         window.addEventListener('show-form',event=>{
             $('#modal-default').modal('show');
         })

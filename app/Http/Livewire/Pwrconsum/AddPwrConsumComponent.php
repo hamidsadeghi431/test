@@ -43,16 +43,16 @@ class AddPwrConsumComponent extends Component
     {
         $this->validateOnly($fields,[
             'fromDate'=>'required', 'toDate'=>'required','pwrConsTotal'=>'required', 'dayQty'=>'required',
-            'price'=>'required', 'temperature'=>'required', 'userId'=>'required','dailyPwrConsum'=>'required'
+            'price'=>'required',  'userId'=>'required'
         ]);
     }
     public function save()
     {
 //        dd($this->idIn);
-
+//dd('hi');
         $this->validate([
             'fromDate'=>'required', 'toDate'=>'required','pwrConsTotal'=>'required', 'dayQty'=>'required',
-            'price'=>'required', 'temperature'=>'required', 'userId'=>'required','dailyPwrConsum'=>'required'
+            'price'=>'required', 'userId'=>'required'
         ]);
         if($this->idIn == 'a')
         {
@@ -63,10 +63,9 @@ class AddPwrConsumComponent extends Component
                 'fromDate'=>$this->fromDate,
                 'toDate'=>$this->toDate,
                 'pwrConsTotal'=>$this->pwrConsTotal,
-                'dailyPwrConsum'=>$this->dailyPwrConsum,
+                'dailyPwrConsum'=>$this->pwrConsTotal/$this->dayQty,
                 'dayQty'=>$this->dayQty,
                 'price'=>$this->price*$this->pwrConsTotal,
-                'temperature'=>$this->temperature,
                 'userInsert'=>Auth::user()->id
             ];
             powerData::create($data);
@@ -78,10 +77,9 @@ class AddPwrConsumComponent extends Component
                 'fromDate'=>$this->fromDate,
                 'toDate'=>$this->toDate,
                 'pwrConsTotal'=>$this->pwrConsTotal,
-                'dailyPwrConsum'=>$this->dailyPwrConsum,
+                'dailyPwrConsum'=>$this->pwrConsTotal/$this->dayQty,
                 'dayQty'=>$this->dayQty,
                 'price'=>$this->price*$this->pwrConsTotal,
-                'temperature'=>$this->temperature,
                 'userUpdate'=>Auth::user()->id
             ];
             powerData::find($this->idIn)->update($data);

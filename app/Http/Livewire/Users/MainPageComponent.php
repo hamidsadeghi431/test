@@ -32,7 +32,8 @@ class MainPageComponent extends Component
     {
         User::destroy($this->delId);
         $this->dispatchBrowserEvent('closeDeleteModal');
-    }    public function render()
+    }
+    public function render()
     {
         $maintitle=' کاربران';
         $pagedescription='مدیریت کاربران';

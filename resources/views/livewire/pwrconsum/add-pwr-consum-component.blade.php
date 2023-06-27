@@ -76,17 +76,17 @@
                     @endif
                 </div>
 {{--         مصرف روز       --}}
-            <div class="form-group">
-                    <label for="exampleInputEmail1">مصرف روز</label>
-                    <input wire:model="dailyPwrConsum" class="form-control" id="exampleInputEmail1" placeholder="مصرف روز" >
-                    @if($errors->has('dailyPwrConsum'))
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h5><i class="icon fa fa-ban"></i> توجه!</h5>
-                            {{ $errors->first('dailyPwrConsum') }}
-                        </div>
-                    @endif
-                </div>
+{{--            <div class="form-group">--}}
+{{--                    <label for="exampleInputEmail1">مصرف روز</label>--}}
+{{--                    <input wire:model="dailyPwrConsum" class="form-control" id="exampleInputEmail1" placeholder="مصرف روز" >--}}
+{{--                    @if($errors->has('dailyPwrConsum'))--}}
+{{--                        <div class="alert alert-danger alert-dismissible">--}}
+{{--                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>--}}
+{{--                            <h5><i class="icon fa fa-ban"></i> توجه!</h5>--}}
+{{--                            {{ $errors->first('dailyPwrConsum') }}--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
 {{--         قیمت       --}}
             <div class="form-group">
                     <label for="exampleInputEmail1">قیمت</label>
@@ -100,17 +100,17 @@
                     @endif
                 </div>
 {{--          دما      --}}
-            <div class="form-group">
-                    <label for="exampleInputEmail1">دما</label>
-                    <input wire:model="temperature" class="form-control" id="exampleInputEmail1" placeholder="دما" >
-                    @if($errors->has('temperature'))
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h5><i class="icon fa fa-ban"></i> توجه!</h5>
-                            {{ $errors->first('temperature') }}
-                        </div>
-                    @endif
-                </div>
+{{--            <div class="form-group">--}}
+{{--                    <label for="exampleInputEmail1">دما</label>--}}
+{{--                    <input wire:model="temperature" class="form-control" id="exampleInputEmail1" placeholder="دما" >--}}
+{{--                    @if($errors->has('temperature'))--}}
+{{--                        <div class="alert alert-danger alert-dismissible">--}}
+{{--                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>--}}
+{{--                            <h5><i class="icon fa fa-ban"></i> توجه!</h5>--}}
+{{--                            {{ $errors->first('temperature') }}--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
 
         </div>
     <!-- /.card-body -->

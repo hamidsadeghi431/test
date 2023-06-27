@@ -31,8 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 //For USR
 Route::middleware(['auth:sanctum','verified'])->group(function(){
-//        Route::get('/user/dashboard',\App\Http\Livewire\User\UserDashboardComponent::class)->name('userdashboard');
-
+//        Route::get('/user/dashboard',\App\Http\Livewire\DashboardComponent::class)->name('userdashboard');
 });
 
 //For ADM ,'accessrole'
@@ -42,4 +41,5 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
     Route::get('/usrprmsn',\App\Http\Livewire\Users\Permission\MainPageComponent::class)->name('userpermission');
     Route::get('/province',\App\Http\Livewire\Province\MainPageComponent::class)->name('cities');
     Route::get('/charts/{id?}',\App\Http\Livewire\Charts\HomeMissionOneChartsComponent::class)->name('charts');
+    Route::get('/usesbfbulding/',\App\Http\Livewire\UsesOfBulding\MainPageComponent::class)->name('uobulding');
 });

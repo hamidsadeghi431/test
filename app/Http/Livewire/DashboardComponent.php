@@ -34,7 +34,7 @@ class DashboardComponent extends Component
     {
         $this->emit('getChartId',$id,$this->meter);
         $this->dispatchBrowserEvent('show-big-modal');
-        dump($this->meter);
+//        dump($this->meter);
 //        dd($id);
     }
 
@@ -96,7 +96,8 @@ class DashboardComponent extends Component
             $tedadRoozTarikhDovom=(new Jalalian($Fristyear,12,1))->getMonthDays();
             $tedadRoozTarikhSevom=(new Jalalian($Secoundyear,$Secoundmonth,$Secoundday))->getMonthDays();
             $one=01;
-            $tedadRoozMah1=$tedadRoozTarikhAval-$Fristday;
+            if ($Fristday == '01')$Fristday=0;
+        $tedadRoozMah1=$tedadRoozTarikhAval-$Fristday;
             $tedadRoozMah2=$tedadRoozTarikhDovom;
             $tedadRoozMah3=intval($Secoundday);
             $totalDay = $tedadRoozMah1+$tedadRoozMah2+$tedadRoozMah3;
@@ -206,16 +207,18 @@ class DashboardComponent extends Component
         $tedadRoozTarikhAval=(new Jalalian($Fristyear,$Fristmonth,$Fristday))->getMonthDays();
         $tedadRoozTarikhDovom=(new Jalalian($Secoundyear,$Secoundmonth,$Secoundday))->getMonthDays();
         $one=01;
+        if ($Fristday == '01')$Fristday=0;
         $tedadRoozMah1=$tedadRoozTarikhAval-$Fristday;
         $tedadRoozMah2=intval($Secoundday);
 
         $totalDay=$tedadRoozMah1+$tedadRoozMah2;
+//        dump($tedadRoozMah1,$tedadRoozMah2,$Fristday);
 //        dump($tedadRoozMah1,$tedadRoozMah2);
         $pwrConsumPerDay=$InpwrConsTotal/$totalDay;
 
         $pwrConsumtotal1=$pwrConsumPerDay*$tedadRoozMah1;
         $pwrConsumtotal2=$pwrConsumPerDay*$tedadRoozMah2;
-
+//        dump($pwrConsumtotal1,$pwrConsumtotal2);
      //   dump($pwrConsumtotal1,$pwrConsumtotal2,$tedadRoozMah2);
         $pricePerDay=$Inprice/$totalDay;
 
@@ -413,7 +416,10 @@ class DashboardComponent extends Component
 //            $this->averageTemperature($longitude,$latitude,$startMIladiDate,$endMIladiDate);
         }
 
-
+    public function deletePwrEnd($id)
+    {
+        powerDataEnd::where('userId',$id)->delete();
+    }
 //    }
     public function energyLicense($r,$cityStatus)
     {
@@ -451,13 +457,20 @@ class DashboardComponent extends Component
     {
       echo shell_exec('/');
     }
+
+    public function requestForAnalyse($id)
+    {
+        $this->emit('GetInfoId',$id);
+        $this->dispatchBrowserEvent('show_info_form');
+//        dd($id);
+    }
     public function render()
     {
 //        dd($this->userId);
-        dump($this->python());
+//        dump($this->python());
         $arr=array();
         $y1=array();
-        $sei=$sei1=$sei2=$seiAv=$seiIdeal=$r=$cityCoStatus=$sei3=0;
+        $sei=$sei1=$sei2=$seiAv=$seiIdeal=$r=$cityCoStatus=$sei3=$potential=0;
         if ($this->userId) {$mm=User::where('user_id',$this->userId)->value('mm2');}
         $users=User::get();
         $lastYear=powerDataEnd::where('userId',$this->userId)->max('year');

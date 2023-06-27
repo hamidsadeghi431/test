@@ -37,9 +37,9 @@
                                     <td>{{$item->year}}</td>
                                     <td>{{$item->month}}</td>
                                     <td>{{$item->dayQty}}</td>
-                                    <td>{{number_format($item->pwrConsTotal)}} </td>
-                                    <td>{{number_format($item->dailyPwrConsum)}} </td>
-                                    <td>{{number_format($item->price)}} </td>
+                                    <td>{{$item->pwrConsTotal}} </td>
+                                    <td>{{$item->dailyPwrConsum}} </td>
+                                    <td>{{$item->price}} </td>
                                     <td>{{$item->temperature}}</td>
                                     {{--                                    <td>@if($item->active == 1) <button class="btn btn-success"><i class="fa fa-check"></i> </button> @else<button class="btn btn-danger"><i class="fa fa-times"></i> </button>@endif</td>--}}
                                     <td><button wire:click="addData({{$item->id}},'update')" class="btn btn-primary"><i class="fa fa-edit"></i> </button> </td>
